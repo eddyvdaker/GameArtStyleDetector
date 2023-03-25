@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+  <img id="img-preview" height="500" style="margin-bottom: 10px;" src="{{ img }}">
+  <p>The uploaded screenshot is {% if style == "PIXEL" %}pixel art{% else %}not pixel art{% endif %} (with a certainty of {{ percent }}%)</p>
+
+  {% if show_form %}
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+      {{ form.confirmation.label }}
+      {{ form.confirmation }}
+    </div>
+    <div class="mb-3">
+      {{ form.submit() }}
+    </div>
+  </form>
+  {% else %}
+  <a class="btn btn-info" href="/">Upload another image</a>
+  {% endif %}
+{% endblock %}

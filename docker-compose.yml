@@ -1,0 +1,9 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - '127.0.0.1:9001:5000'
+    volumes:
+      - './models:/usr/src/app/models'
+      - './images:/usr/src/app/images'

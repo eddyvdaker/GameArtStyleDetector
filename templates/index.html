@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+  <p>Upload an image from a game. (images will be saved for further training)</p>
+  <img id="img-preview" height="500" style="margin-bottom: 10px;">
+  <form method="POST" enctype="multipart/form-data">
+    {{  form.hidden_tag() }}
+    <div class="mb-3">
+      {{ form.image(size=32) }}
+    </div>
+    <div class="mb-3">
+      {{ form.submit() }}
+    </div>
+  </form>
+  <script>
+  const reader = new FileReader();
+  const filePreview = document.getElementById("img-preview");
+  const fileInput = document.getElementById("image");
+  let file;
+
+  reader.onload = e => {
+      filePreview.src = e.target.result;
+  }
+
+  fileInput.addEventListener('change', e => {
+      const f = e.target.files[0];
+      file = f;
+      reader.readAsDataURL(f);
+  })
+  </script>
+{% endblock %}

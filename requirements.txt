@@ -1,0 +1,7 @@
+tf-gpu
+jupyter
+image-slicer
+flask
+flask-wtf
+matplotlib
+sklearn
